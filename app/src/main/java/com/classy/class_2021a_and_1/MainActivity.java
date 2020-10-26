@@ -1,0 +1,135 @@
+package com.classy.class_2021a_and_1;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    /*
+    /0. create button
+    /1. give id to button view
+    /2. connect it to activity
+    /3. listener
+    /4. create function
+    /5. build pop up function - google
+     */
+
+    /*
+/0. create button
+/1. create label
+/2. give ids to views
+/3. connect them to activity
+/4. listener
+/5. create function
+6. increment counter
+ */
+
+    private TextView main_LBL_title;
+    private Button main_BTN_popUp;
+    private TextView main_LBL_counter;
+    private Button main_BTN_increaseCounter;
+    private int count = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.d("pttt", "onCreate");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        main_LBL_title = findViewById(R.id.main_LBL_title);
+        main_BTN_popUp = findViewById(R.id.main_BTN_popUp);
+        main_LBL_counter = findViewById(R.id.main_LBL_counter);
+        main_BTN_increaseCounter = findViewById(R.id.main_BTN_increaseCounter);
+
+        main_BTN_increaseCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                increaseCounter();
+            }
+        });
+
+        try {
+            if (savedInstanceState != null) {
+                int previousCount = savedInstanceState.getInt("MY_INT");
+                count = previousCount;
+                main_LBL_counter.setText("" + count);
+            }
+        } catch (Exception ex) { }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.d("pttt", "onSaveInstanceState");
+        super.onSaveInstanceState(outState);
+        outState.putInt("MY_INT", count);
+    }
+
+    private void increaseCounter() {
+        count++;
+        main_LBL_counter.setText("" + count);
+        Log.d("pttt", "" + count);
+    }
+
+
+    private void showPopUp(String message) {
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle("Delete entry")
+                .setMessage("Are you sure you want to delete this entry?")
+                .setPositiveButton("Close", null)
+                .show();
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        Log.d("pttt", "onStart");
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("pttt", "onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("pttt", "onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d("pttt", "onStop");
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("pttt", "onDestroy");
+        super.onDestroy();
+    }
+}
+
+/*
+View types:
+BTN
+LBL
+EDT
+LST
+IMG
+PRG
+LAY
+
+ */
