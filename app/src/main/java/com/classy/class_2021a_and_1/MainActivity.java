@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,11 +76,15 @@ public class MainActivity extends AppCompatActivity {
                 openSecondActivity(MainActivity.this);
             }
         });
+
+        //Toast.makeText(this, "Hiii", Toast.LENGTH_SHORT).show();
     }
 
     private void openSecondActivity(Activity activity) {
-        Intent myIntent = new Intent(activity, MainActivity.class);
+        Intent myIntent = new Intent(activity, Activity_Score.class);
+        myIntent.putExtra(Activity_Score.EXTRA_KEY_SCORE, count);
         startActivity(myIntent);
+        finish();
     }
 
     @Override
@@ -138,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("pttt", "onDestroy");
         super.onDestroy();
     }
+
 }
 
 /*
