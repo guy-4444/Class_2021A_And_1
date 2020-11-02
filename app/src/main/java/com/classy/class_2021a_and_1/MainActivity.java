@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button main_BTN_popUp;
     private TextView main_LBL_counter;
     private Button main_BTN_increaseCounter;
+    private Button main_BTN_secondActivity;
     private int count = 0;
 
     @Override
@@ -47,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_popUp = findViewById(R.id.main_BTN_popUp);
         main_LBL_counter = findViewById(R.id.main_LBL_counter);
         main_BTN_increaseCounter = findViewById(R.id.main_BTN_increaseCounter);
+        main_BTN_secondActivity = findViewById(R.id.main_BTN_secondActivity);
 
         main_BTN_increaseCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                increaseCounter();
+                increaseCounter2();
             }
         });
 
@@ -62,6 +66,20 @@ public class MainActivity extends AppCompatActivity {
                 main_LBL_counter.setText("" + count);
             }
         } catch (Exception ex) { }
+
+
+
+        main_BTN_secondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSecondActivity(MainActivity.this);
+            }
+        });
+    }
+
+    private void openSecondActivity(Activity activity) {
+        Intent myIntent = new Intent(activity, MainActivity.class);
+        startActivity(myIntent);
     }
 
     @Override
@@ -71,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("MY_INT", count);
     }
 
-    private void increaseCounter() {
+    private void increaseCounter2() {
         count++;
         main_LBL_counter.setText("" + count);
         Log.d("pttt", "" + count);

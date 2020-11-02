@@ -36,7 +36,14 @@
         android:id="@+id/main_BTN_increaseCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:text="Increase Counter"/>
+
+    <Button
+        android:id="@+id/main_BTN_secondActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second Activity"/>
 
 
 </LinearLayout>
